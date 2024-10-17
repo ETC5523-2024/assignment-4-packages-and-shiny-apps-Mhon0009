@@ -1,12 +1,14 @@
 Package: ValentineTrend
-Title: What the Package Does (One Line, Title Case)
+Title: Valentine's Day Consumer Spending Trends from 2010 to 2022
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Min Ni", "Hong", , "mhon0009@student.monash.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: The package contains the Valentine's Day survey data with using the interactive charts to explore a demographic breakdown of total spending, average spending, types of gifts planned and spending per type of gift.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
