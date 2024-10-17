@@ -4,7 +4,17 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
+## Overview
+
 The goal of ValentineTrend is to ...
+
+
+This package provides the following datasets.
+
+- `?gift_age`: 
+- `?gift_gender`: 
+- `?historical_full_spending`: 
+- `?historical_gift_trends_percent_buying`: 
 
 ## Installation
 
@@ -15,12 +25,5 @@ You can install the development version of ValentineTrend from [GitHub](https://
 devtools::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Mhon0009")
 ```
 
-## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(ValentineTrend)
-## basic example code
-```
 
