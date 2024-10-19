@@ -6,7 +6,9 @@
 
 ## Overview
 
-The goal of ValentineTrend is to ...
+This package contains information about all consumer spending data on Valentine's Day that departed from NYC (e.g. EWR, JFK and LGA) to destinations 
+in the United States, Puerto Rico, and the American Virgin Islands) in 2013: 336,776 flights in total. 
+To help understand what causes delays, it also includes a number of other useful datasets.
 
 
 This package provides the following datasets.

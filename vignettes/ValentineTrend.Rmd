@@ -1,0 +1,21 @@
+---
+title: "ValentineTrend"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ValentineTrend}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+```{r setup}
+library(ValentineTrend)
+```

@@ -4,7 +4,8 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Min Ni", "Hong", , "mhon0009@student.monash.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: The package contains the Valentine's Day survey data with using the interactive charts to explore a demographic breakdown of total spending, average spending, types of gifts planned and spending per type of gift.
+Description: The package contains the Valentine's Day survey data with using the interactive charts to 
+            explore a demographic breakdown of total spending, average spending, types of gifts planned and spending per type of gift.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -14,3 +15,7 @@ Depends:
 LazyData: true
 Imports: 
     dplyr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
