@@ -110,36 +110,59 @@ this package!</p>
 create a combined bar and line chart showing total expected and average
 per person spending from 2010 to 2022.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">historical_full_spending</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">PerPerson</span>, text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Year: "</span>, <span class="va">Year</span>, <span class="st">"&lt;br&gt;Per Person Spend: $"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">PerPerson</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>        stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="st">"hotpink"</span>, alpha <span class="op">=</span> <span class="fl">0.7</span></span>
-<span>      <span class="op">)</span> <span class="op">+</span></span>
-<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">total_expected_valentines_day_spending_in_billions</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span>,</span>
-<span>        color <span class="op">=</span> <span class="st">"mediumvioletred"</span>, size <span class="op">=</span> <span class="fl">1</span></span>
-<span>      <span class="op">)</span> <span class="op">+</span></span>
-<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">total_expected_valentines_day_spending_in_billions</span> <span class="op">*</span> <span class="fl">10</span>,</span>
-<span>            text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Year: "</span>, <span class="va">Year</span>, <span class="st">"&lt;br&gt;Total Spend: $"</span>, <span class="va">total_expected_valentines_day_spending_in_billions</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>        color <span class="op">=</span> <span class="st">"mediumvioletred"</span>, size <span class="op">=</span> <span class="fl">2</span></span>
-<span>      <span class="op">)</span> <span class="op">+</span></span>
-<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">total_expected_valentines_day_spending_in_billions</span> <span class="op">*</span> <span class="fl">10</span> <span class="op">+</span> <span class="fl">10</span>,</span>
-<span>            label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"$"</span>, <span class="va">total_expected_valentines_day_spending_in_billions</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>        size <span class="op">=</span> <span class="fl">3</span>, fontface <span class="op">=</span> <span class="st">"bold"</span></span>
-<span>      <span class="op">)</span> <span class="op">+</span></span>
-<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>        title <span class="op">=</span> <span class="st">"Valentine's Day Spending Plans"</span>,</span>
-<span>        x <span class="op">=</span> <span class="st">"Year"</span>,</span>
-<span>        y <span class="op">=</span> <span class="st">"Spending ($)"</span></span>
-<span>      <span class="op">)</span> <span class="op">+</span></span>
-<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"point"</span>, x <span class="op">=</span> <span class="fl">2013.9</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">12</span>, color <span class="op">=</span> <span class="st">"hotpink"</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>  </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">2015.1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">12</span>, label <span class="op">=</span> <span class="st">"Per Person Spend"</span>, size <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"point"</span>, x <span class="op">=</span> <span class="fl">2017</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">12</span>, color <span class="op">=</span> <span class="st">"mediumvioletred"</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">2017.8</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">12</span>, label <span class="op">=</span> <span class="st">"Total Spend"</span>, size <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Create a bar and line chart to visualize Valentine's Day spending trends over the years</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">historical_full_spending</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add a bar chart to show the average per-person spending each year</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">PerPerson</span>, </span>
+<span>        text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Year: "</span>, <span class="va">Year</span>, <span class="st">"&lt;br&gt;Per Person Spend: $"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">PerPerson</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,  <span class="co"># Add hover text for plotly</span></span>
+<span>    stat <span class="op">=</span> <span class="st">"identity"</span>,  <span class="co"># Use identity to represent actual values</span></span>
+<span>    fill <span class="op">=</span> <span class="st">"hotpink"</span>,   <span class="co"># Set bar color to hotpink</span></span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.7</span>         <span class="co"># Set transparency for the bars</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add a line to represent total expected spending (scaled by 10 for visualization)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">total_expected_valentines_day_spending_in_billions</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span>,  <span class="co"># Scale total spending for better visualization</span></span>
+<span>    color <span class="op">=</span> <span class="st">"mediumvioletred"</span>,  <span class="co"># Line color set to mediumvioletred</span></span>
+<span>    size <span class="op">=</span> <span class="fl">1</span>                    <span class="co"># Set line thickness</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add points for each total expected spending data point</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">total_expected_valentines_day_spending_in_billions</span> <span class="op">*</span> <span class="fl">10</span>,  <span class="co"># Match y value to scaled total spending</span></span>
+<span>        text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Year: "</span>, <span class="va">Year</span>, <span class="st">"&lt;br&gt;Total Spend: $"</span>, <span class="va">total_expected_valentines_day_spending_in_billions</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span>,  <span class="co"># Add hover text for plotly</span></span>
+<span>    color <span class="op">=</span> <span class="st">"mediumvioletred"</span>,  <span class="co"># Set point color to match the line</span></span>
+<span>    size <span class="op">=</span> <span class="fl">2</span>                    <span class="co"># Set point size</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add text labels above the total spending points for additional information</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">total_expected_valentines_day_spending_in_billions</span> <span class="op">*</span> <span class="fl">10</span> <span class="op">+</span> <span class="fl">10</span>,  <span class="co"># Adjust y position for text labels</span></span>
+<span>        label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"$"</span>, <span class="va">total_expected_valentines_day_spending_in_billions</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span>,  <span class="co"># Show total spending in billions</span></span>
+<span>    size <span class="op">=</span> <span class="fl">3</span>,          <span class="co"># Set text size</span></span>
+<span>    fontface <span class="op">=</span> <span class="st">"bold"</span>  <span class="co"># Make text bold</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add plot titles and axis labels</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Valentine's Day Spending Plans"</span>,  <span class="co"># Set plot title</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Year"</span>,                                <span class="co"># Set x-axis label</span></span>
+<span>    y <span class="op">=</span> <span class="st">"Spending ($)"</span>                         <span class="co"># Set y-axis label</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Apply a minimal theme for a clean layout</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Center the plot title and increase font size</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add manual annotations to represent legend information</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"point"</span>, x <span class="op">=</span> <span class="fl">2013.9</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">12</span>, color <span class="op">=</span> <span class="st">"hotpink"</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Add point for "Per Person Spend"</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">2015.1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">12</span>, label <span class="op">=</span> <span class="st">"Per Person Spend"</span>, size <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Add label for "Per Person Spend"</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"point"</span>, x <span class="op">=</span> <span class="fl">2017</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">12</span>, color <span class="op">=</span> <span class="st">"mediumvioletred"</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Add point for "Total Spend"</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">2017.8</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">12</span>, label <span class="op">=</span> <span class="st">"Total Spend"</span>, size <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span>  <span class="co"># Add label for "Total Spend"</span></span></code></pre></div>
 <p><img src="Valentinetrend_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 <p>We also create a separate section for each dataset, showing different
 analyses or visualizations.</p>
@@ -150,21 +173,37 @@ analyses or visualizations.</p>
 trends by different age groups. Here, we create a line chart to
 visualize gift preferences among different age groups.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Use pivot_longer to reshape the data</span></span>
+<code class="sourceCode R"><span><span class="co"># Reshape the 'gifts_age' data from wide to long format using pivot_longer</span></span>
+<span><span class="co"># This converts columns 'Candy' to 'GiftCards' into a single 'GiftCategory' column</span></span>
+<span><span class="co"># and their respective values into a 'Percentage' column</span></span>
 <span><span class="va">gifts_age_long</span> <span class="op">&lt;-</span> <span class="va">gifts_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Candy</span><span class="op">:</span><span class="va">GiftCards</span>, </span>
-<span>               names_to <span class="op">=</span> <span class="st">"GiftCategory"</span>, </span>
-<span>               values_to <span class="op">=</span> <span class="st">"Percentage"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="va">Candy</span><span class="op">:</span><span class="va">GiftCards</span>,          <span class="co"># Specify columns to reshape</span></span>
+<span>    names_to <span class="op">=</span> <span class="st">"GiftCategory"</span>,       <span class="co"># New column for gift categories</span></span>
+<span>    values_to <span class="op">=</span> <span class="st">"Percentage"</span>         <span class="co"># New column for spending percentages</span></span>
+<span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create the line plot for gift categories</span></span>
+<span><span class="co"># Create a line plot to visualize spending on different gift categories by age group</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">gifts_age_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age</span>, y <span class="op">=</span> <span class="va">Percentage</span>, color <span class="op">=</span> <span class="va">GiftCategory</span>, group <span class="op">=</span> <span class="va">GiftCategory</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add a line for each gift category, grouped by age group</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add points to indicate data points for each age group and gift category</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Spending on Different Gifts By Age Group"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"Age Group"</span>, </span>
-<span>       y <span class="op">=</span> <span class="st">"Percentage (%)"</span>,</span>
-<span>       color <span class="op">=</span> <span class="st">"Gift Category"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Add titles and labels to the plot</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Spending on Different Gifts By Age Group"</span>,  <span class="co"># Plot title</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Age Group"</span>,                                     <span class="co"># X-axis label</span></span>
+<span>    y <span class="op">=</span> <span class="st">"Percentage (%)"</span>,                                <span class="co"># Y-axis label</span></span>
+<span>    color <span class="op">=</span> <span class="st">"Gift Category"</span>                              <span class="co"># Legend title</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Apply minimal theme for a clean look</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Use a color palette for distinguishing different gift categories</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Accent"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Valentinetrend_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
