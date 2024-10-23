@@ -1,6 +1,9 @@
 #' Valentine's Day Gift Spending by Age Group
 #'
+#'
 #' A dataset that contains the spending on various gift categories by different age groups during Valentine's Day.
+#'
+#'
 #'
 #' @format A data frame with 6 rows and 9 variables.
 #' \describe{

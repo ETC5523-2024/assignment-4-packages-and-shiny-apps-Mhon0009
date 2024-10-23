@@ -2,9 +2,8 @@ Package: Valentinetrend
 Title: Valentine's Day Consumer Spending Trends from 2010 to 2022
 Version: 0.0.0.9000
 Authors@R: 
-    person("Min Ni", "Hong", , "mhon0009@student.monash.edu", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: The package contains the Valentine's Day consumer survey data annually for over a decade
+    person("Min Ni", "Hong", , "mhon0009@student.monash.edu", role = c("aut", "cre"))
+Description: The package contains Valentine's Day consumer survey data on how people have planned to celebrate annually over the past decade.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -24,5 +23,7 @@ Imports:
     tidyr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3

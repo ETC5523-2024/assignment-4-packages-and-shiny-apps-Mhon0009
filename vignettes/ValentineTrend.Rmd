@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 ## Introduction of `Valentindtrend` package
-
+<br>
 This package includes four datasets: `gifts_age`, `gifts_gender`, `historical_full_spending`, and `historical_gifts_trends_percent_buying`. These datasets show annual trends in how people plan to celebrate Valentine’s Day over the past decade, including total expected spending, average per-person spending, and preferred gift types, broken down by age and gender."
 
 The data can be accessed by loading the `Valentinetrend` and calling on the object `gifts_age`, or alternatively using `Valentinetrend::gifts_age` if you want to analyse Valentine's Day spending trends by different age group. 
@@ -50,62 +50,102 @@ Some examples analyses using the datasets are provided. You'll learn how to perf
 Below, we use the `historical_full_spending` dataset to create a combined bar and line chart showing total expected and average per person spending from 2010 to 2022.
 
 ```{r}
+# Create a bar and line chart to visualize Valentine's Day spending trends over the years
 ggplot(historical_full_spending, aes(x = Year)) +
-      geom_bar(
-        aes(y = PerPerson, text = paste0("Year: ", Year, "<br>Per Person Spend: $", round(PerPerson, 2))),
-        stat = "identity", fill = "hotpink", alpha = 0.7
-      ) +
-      geom_line(
-        aes(y = total_expected_valentines_day_spending_in_billions * 10),
-        color = "mediumvioletred", size = 1
-      ) +
-      geom_point(
-        aes(y = total_expected_valentines_day_spending_in_billions * 10,
-            text = paste0("Year: ", Year, "<br>Total Spend: $", total_expected_valentines_day_spending_in_billions, "B")),
-        color = "mediumvioletred", size = 2
-      ) +
-      geom_text(
-        aes(y = total_expected_valentines_day_spending_in_billions * 10 + 10,
-            label = paste0("$", total_expected_valentines_day_spending_in_billions, "B")),
-        size = 3, fontface = "bold"
-      ) +
-      labs(
-        title = "Valentine's Day Spending Plans",
-        x = "Year",
-        y = "Spending ($)"
-      ) +
-      theme_minimal() +
-      theme(plot.title = element_text(hjust = 0.5, size = 16)) +
-  annotate("point", x = 2013.9, y = -12, color = "hotpink", size = 3) +  
-  annotate("text", x = 2015.1, y = -12, label = "Per Person Spend", size = 3, color = "black") + 
-  annotate("point", x = 2017, y = -12, color = "mediumvioletred", size = 3) + 
-  annotate("text", x = 2017.8, y = -12, label = "Total Spend", size = 3, color = "black")
+  
+  # Add a bar chart to show the average per-person spending each year
+  geom_bar(
+    aes(y = PerPerson, 
+        text = paste0("Year: ", Year, "<br>Per Person Spend: $", round(PerPerson, 2))),  # Add hover text for plotly
+    stat = "identity",  # Use identity to represent actual values
+    fill = "hotpink",   # Set bar color to hotpink
+    alpha = 0.7         # Set transparency for the bars
+  ) +
+  
+  # Add a line to represent total expected spending (scaled by 10 for visualization)
+  geom_line(
+    aes(y = total_expected_valentines_day_spending_in_billions * 10),  # Scale total spending for better visualization
+    color = "mediumvioletred",  # Line color set to mediumvioletred
+    size = 1                    # Set line thickness
+  ) +
+  
+  # Add points for each total expected spending data point
+  geom_point(
+    aes(y = total_expected_valentines_day_spending_in_billions * 10,  # Match y value to scaled total spending
+        text = paste0("Year: ", Year, "<br>Total Spend: $", total_expected_valentines_day_spending_in_billions, "B")),  # Add hover text for plotly
+    color = "mediumvioletred",  # Set point color to match the line
+    size = 2                    # Set point size
+  ) +
+  
+  # Add text labels above the total spending points for additional information
+  geom_text(
+    aes(y = total_expected_valentines_day_spending_in_billions * 10 + 10,  # Adjust y position for text labels
+        label = paste0("$", total_expected_valentines_day_spending_in_billions, "B")),  # Show total spending in billions
+    size = 3,          # Set text size
+    fontface = "bold"  # Make text bold
+  ) +
+  
+  # Add plot titles and axis labels
+  labs(
+    title = "Valentine's Day Spending Plans",  # Set plot title
+    x = "Year",                                # Set x-axis label
+    y = "Spending ($)"                         # Set y-axis label
+  ) +
+  
+  # Apply a minimal theme for a clean layout
+  theme_minimal() +
+  
+  # Center the plot title and increase font size
+  theme(plot.title = element_text(hjust = 0.5, size = 16)) +
+  
+  # Add manual annotations to represent legend information
+  annotate("point", x = 2013.9, y = -12, color = "hotpink", size = 3) +  # Add point for "Per Person Spend"
+  annotate("text", x = 2015.1, y = -12, label = "Per Person Spend", size = 3, color = "black") +  # Add label for "Per Person Spend"
+  annotate("point", x = 2017, y = -12, color = "mediumvioletred", size = 3) +  # Add point for "Total Spend"
+  annotate("text", x = 2017.8, y = -12, label = "Total Spend", size = 3, color = "black")  # Add label for "Total Spend"
 
 ```
 
 We also create a separate section for each dataset, showing different analyses or visualizations.
 
-### Exploring the spending trends on gifts breaking down by age
+### Spending trends on gifts breaking down by age
 
 The `gifts_age` dataset provides insights into spending trends by different age groups. Here, we create a line chart to visualize gift preferences among different age groups.
 
 ```{r}
-# Use pivot_longer to reshape the data
+# Reshape the 'gifts_age' data from wide to long format using pivot_longer
+# This converts columns 'Candy' to 'GiftCards' into a single 'GiftCategory' column
+# and their respective values into a 'Percentage' column
 gifts_age_long <- gifts_age %>%
-  pivot_longer(cols = Candy:GiftCards, 
-               names_to = "GiftCategory", 
-               values_to = "Percentage")
+  pivot_longer(
+    cols = Candy:GiftCards,          # Specify columns to reshape
+    names_to = "GiftCategory",       # New column for gift categories
+    values_to = "Percentage"         # New column for spending percentages
+  )
 
-# Create the line plot for gift categories
+# Create a line plot to visualize spending on different gift categories by age group
 ggplot(gifts_age_long, aes(x = Age, y = Percentage, color = GiftCategory, group = GiftCategory)) +
+  
+  # Add a line for each gift category, grouped by age group
   geom_line(size = 1) +
+  
+  # Add points to indicate data points for each age group and gift category
   geom_point(size = 2) +
-  labs(title = "Spending on Different Gifts By Age Group",
-       x = "Age Group", 
-       y = "Percentage (%)",
-       color = "Gift Category") +
-  theme_minimal()+
+  
+  # Add titles and labels to the plot
+  labs(
+    title = "Spending on Different Gifts By Age Group",  # Plot title
+    x = "Age Group",                                     # X-axis label
+    y = "Percentage (%)",                                # Y-axis label
+    color = "Gift Category"                              # Legend title
+  ) +
+  
+  # Apply minimal theme for a clean look
+  theme_minimal() +
+  
+  # Use a color palette for distinguishing different gift categories
   scale_color_brewer(palette = "Accent")
+
 ```
 
 ## Interactive plots

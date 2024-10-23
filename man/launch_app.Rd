@@ -6,6 +6,9 @@
 \usage{
 launch_app()
 }
+\value{
+A detailed analysis of Valentine's Day spending trends presented with interactive plots in a dashboard.
+}
 \description{
-This function launches the Shiny app for interactive analysis of Valentine's Day data.
+Launch shiny app
 }
