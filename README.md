@@ -6,15 +6,7 @@
 
 ## Overview
 
-This package contains comprehensive data on Valentine's Day spending trends over the past decade which provided 
-by NRF who has surveyed consumers about how they plan to celebrate Valentine’s Day annually for over a decade. 
-It includes datasets that capture total expected spending, average spending per person, spending per type of gift,
-and consumer-preferred types of gifts broken down by age and gender. This package is designed to help users analyze 
-consumer behavior and spending patterns during Valentine’s Day especially for the retailers. 
-
-
-Take a deeper dive into the data from the last 10 years, and use the interactive charts to explore a demographic breakdown of total spending, average spending, 
-types of gifts planned and spending per type of gift.
+This package contains comprehensive data on Valentine's Day spending trends over the past decade, provided by the National Retail Federation(NRF), which has surveyed consumers annually on how they plan to celebrate Valentine’s Day. It includes datasets that capture total expected spending, average spending per person, spending by gift type, and consumer-preferred gifts, broken down by age and gender. This package is designed to help users, especially retailers, analyze consumer behavior and spending patterns during Valentine’s Day.
 
 This package provides the following datasets.
 
@@ -35,5 +27,5 @@ devtools::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Mhon
 To take a deeper dive into the data from the last 10 years, we use the interactive charts to explore a demographic breakdown of total spending, average spending and spending per type of gift. 
 You can explore these insights by using `Valentinetrend::launch_app()`to launch the Shiny app, which offers a range of interactive plots for detailed analysis.
 
-You can see the pkgdown site through the following link[Valentinetrend]()
+You can see the pkgdown site through the following link[Valentinetrend](https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-Mhon0009/)
 

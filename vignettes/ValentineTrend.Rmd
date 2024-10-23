@@ -20,7 +20,7 @@ This package includes four datasets: `gifts_age`, `gifts_gender`, `historical_fu
 
 The data can be accessed by loading the `Valentinetrend` and calling on the object `gifts_age`, or alternatively using `Valentinetrend::gifts_age` if you want to analyse Valentine's Day spending trends by different age group. 
 
-```{r}
+```{r, echo = TRUE, eval = FALSE}
 library(Valentinetrend)
 
 # Load the gifts_age dataset
@@ -95,6 +95,6 @@ ggplot(gifts_age_long, aes(x = Age, y = Percentage, color = GiftCategory, group 
 ````
 
 
-Alternatively, you can create interactive charts using the plotly package, as demonstrated in the Shiny app. You can launch the app with `Valentinetrend::launch_app()` to explore engaging interactive plots.
+Alternatively, you can create interactive charts using the `plotly` package, as demonstrated in the Shiny app. You can launch the app with `Valentinetrend::launch_app()` to explore engaging interactive plots.
 
-The above guide demonstrates how to use the `Valentinetrend` package to analyze Valentine's Day spending trends. You can also explore additional datasets (`gifts_gender`, `historical_gifts_trends_percent_buying`) for further insights. For more detailed documentation, visit the [pkgdown site](https://your-username.github.io/Valentinetrend).
+The above guide demonstrates how to use the `Valentinetrend` package to analyze Valentine's Day spending trends. You can also explore additional datasets (`gifts_gender`, `historical_gifts_trends_percent_buying`) for further insights. 

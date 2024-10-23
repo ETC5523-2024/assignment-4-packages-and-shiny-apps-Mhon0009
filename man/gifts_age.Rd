@@ -19,7 +19,7 @@ A data frame with 6 rows and 9 variables.
 }
 }
 \source{
-\url{'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv'
+\url{https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv}
 }
 \usage{
 gifts_age

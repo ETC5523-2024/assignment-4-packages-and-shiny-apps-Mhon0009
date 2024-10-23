@@ -25,6 +25,7 @@ A data frame with 2 rows and 9 variables.
 gifts_gender
 }
 \description{
-A dataset that contains spending on various gift categories during Valentine's Day, breakdown by gender.
+A dataset that contains spending on various gift categories during Valentine's Day,
+breakdown by gender.
 }
 \keyword{datasets}

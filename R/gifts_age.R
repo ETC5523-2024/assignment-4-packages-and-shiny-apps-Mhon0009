@@ -14,5 +14,5 @@
 #'   \item{Clothing}{Average percent spending on clothing}
 #'   \item{GiftCards}{Average percent spending on gift cards}
 #' }
-#' @source \url{'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv'
+#' @source \url{https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv}
 "gifts_age"
