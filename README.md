@@ -1,14 +1,12 @@
 
-# ValentineTrend
+# Valentinetrend
 
 <!-- badges: start -->
 <!-- badges: end -->
 
 ## Overview
 
-This package contains information about all consumer spending data on Valentine's Day that departed from NYC (e.g. EWR, JFK and LGA) to destinations 
-in the United States, Puerto Rico, and the American Virgin Islands) in 2013: 336,776 flights in total. 
-To help understand what causes delays, it also includes a number of other useful datasets.
+This package contains information about 
 
 
 This package provides the following datasets.
@@ -20,7 +18,7 @@ This package provides the following datasets.
 
 ## Installation
 
-You can install the development version of ValentineTrend from [GitHub](https://github.com/) with:
+You can install the development version of Valentinetrend from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
