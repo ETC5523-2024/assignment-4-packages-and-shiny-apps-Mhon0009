@@ -16,7 +16,7 @@ This package provides the following datasets:
 
 - `?historical_full_spending`: Provides total expected spending, average spending per person and average spending per person on different gifts from 2010 to 2022.
 
-- `?historical_gift_trends_percent_buying`: Tracks consumer trends in gift-buying, showing the percentage of people buying specific gift categories over the years.
+- `?historical_gift_trends_percent_buying`: Provides consumer trends in gift-buying, showing the percentage of people buying specific gift categories over the years.
 
 ## Installation
 
@@ -27,10 +27,12 @@ You can install the development version of Valentinetrend directly from [GitHub]
 remotes::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Mhon0009")
 ```
 
+## Getting help
+
 To take a deeper dive into the data from the last 10 years, we use the interactive charts to explore a demographic breakdown of total spending, average spending and spending per type of gift. 
 You can explore these insights by using `Valentinetrend::launch_app()`to launch the Shiny app, which offers a range of interactive plots for detailed analysis.
 
-You can see the pkgdown site through the following link [Valentinetrend](https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-Mhon0009/), where you can find more detailed information about this package."
+You can see the pkgdown site through the following link [Valentinetrend](https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-Mhon0009/), where you can find more detailed information about this package.
 
 
 

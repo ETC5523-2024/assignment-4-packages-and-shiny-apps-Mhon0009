@@ -9,10 +9,3 @@ launch_app()
 \description{
 This function launches the Shiny app for interactive analysis of Valentine's Day data.
 }
-\examples{
-\dontrun{
-launch_app()
-}
-
-
-}
